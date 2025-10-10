@@ -23,7 +23,9 @@ def calculate(operation, num1, num2=None):
         elif operation == "multiply":
             result = multiply(num1, num2)
         elif operation == "divide":
-
+            if num2 == 0:
+                click.echo("Error: Cannot divide by zero.")
+                sys.exit(1)
             result = divide(num1, num2)
         elif operation == "power":
             result = power(num1, num2)
@@ -45,7 +47,7 @@ def calculate(operation, num1, num2=None):
     except Exception as e:  # pylint: disable=broad-exception-caught
         click.echo(f"Unexpected error: {e}")
         sys.exit(1)
-        
+
 
 if __name__ == "__main__":
     calculate()  # pylint: disable=no-value-for-parameter
