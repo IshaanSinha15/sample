@@ -51,17 +51,17 @@ class TestCLIIntegration:
     def test_cli_sqrt_integration(self):
         res = self.run_cli("sqrt", "16")
         assert res.returncode == 0
-        assert res.output.strip() == "4"
+        assert res.stdout.strip() == "4"
 
     def test_cli_error_handling_integration(self):
         res = self.run_cli("divide", "10", "0")
         assert res.returncode == 1
-        assert "Cannot divide by zero" in res.output
+        assert "Cannot divide by zero" in res.stdout
 
     def test_cli_invalid_operation_integration(self):
         res = self.run_cli("invalid", "1", "2")
         assert res.returncode == 1
-        assert "Unknown operation" in res.output
+        assert "Unknown operation" in res.stdout
 
 class TestCalculatorModuleIntegration:
     """Test calculator module functions work
