@@ -99,7 +99,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions-python@v4
+        uses: actions/setup-python@v4
         with:
           python-version: "3.13"
       - name: Install black
@@ -109,9 +109,8 @@ jobs:
       - name: Check formatting with black (check)
         run: black src/ tests/ --check
       - name: Show black diff
-        # show what would change (doesn't modify repo)
         run: black src/ tests/ --diff || true
-  # Security stage: run bandit and upload JSON report
+
   security:
     runs-on: ubuntu-latest
     needs: format
